@@ -1,19 +1,12 @@
 module Bibliografia
 	require_relative "Bibliografia"
 
-	class Revista < Bibliografia
+	class Art_Revista < Bibliografia
 		attr_accessor :pub
 
-		def initialize(tp, pp, t, a, r, n, f, i, ref)
-			@tipo_pub = tp
-			@pp = pp
-			@autor = t
-			@titulo = a
-			@revista = r
-			@num_edicion = n
-			@fecha_publicacion = f
-			@issn = i
-			@referencia = ref
+		def initialize(a, ap, t, s, n, e, m, an, i, nom)
+			objeto(a, ap, t, s, n, e, m, an, i, si)
+			@nom_revista = nom
 		end
 
 	end

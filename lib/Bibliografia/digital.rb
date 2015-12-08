@@ -1,17 +1,15 @@
 module Bibliografia
 	require_relative "Bibliografia"
 
-	class Articulo_Digital < Bibliografia
+	class Art_Digital < Bibliografia
 		attr_accessor :pub
 
-		def initialize(tp, pp, t, a, url, n, f)
-			@tipo_pub = tp
-			@pp = pp
-			@autor = t
-			@titulo = a
+		def initialize(a, ap, fech1, t, e, me, lug, url)
+			objeto(a, ap, t, n, e)
+			@fecha_pub = fech1
+			@medio = me
+			@lugar_pub = lug
 			@url = url
-			@num_edicion = n
-			@fecha_publicacion = f
 		end
 
 	end

@@ -2,6 +2,8 @@ require "Bibliografia/version"
 require "Bibliografia/Bibliografia.rb"
 require "Bibliografia/lista.rb"
 require "Bibliografia/libro.rb"
+require "Bibliografia/periodico.rb"
+require "Bibliografia/articulo.rb"
 require "Bibliografia/revista.rb"
 require "Bibliografia/digital.rb"
 

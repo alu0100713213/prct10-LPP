@@ -1,105 +1,84 @@
-module Bibliografia
-	class Bibliografia
-		include Comparable
-		attr_reader :tipo_pub, :autor, :titulo, :editorial, :num_edicion,
-	              :serie, :fecha_publicacion, :isbn,
-	              :isbn13
+module Bibliografiaw
+		class Bibliografia
+			include Comparable
+			attr_reader :autores, :apellidos, :titulo, :serie, :num_editorial,
+			      :edicion, :mes, :ano, :isbn
 
-	def initialize(tp, t, a, e, n, s, f, i, r)
-		@tipo_pub = tp
-		@autor = t
-		@titulo = a
-		@editorial = e
-		@num_edicion = n
-		@serie = s
-		@fecha_publicacion = f
-		@isbn = i
-		@isbn13 = r
-	end
+		def initialize(a, ap, t, s, n, e, m, an, i)
+			@autores = a
+			@apellidos = ap
+			@titulo = t
+			@serie = s
+			@num_editorial = n
+			@edicion = e
+			@mes = m
+			@ano = an
+			@isbn = i
+			@apellidos = ap
+		end
+	
+		def <=>(other)
+			if(@apellidos != other.apellidos)
+				@apellidos <=> other.apellidos
+			else
+				if(@anno != other.anno)
+					@anno <=> other.anno
+				else
+					@titulo <=> other.titulo
+				end
+			end
+		end
 
-	def <=>(other)
-		@titulo <=> other.titulo
-	end
+		def ==(other)
+			@titulo == other.titulo
+		end
 
-	def ==(other)
-		@titulo == other.titulo
-	end
+		def GetAutores()
+			tam = @autores.length
+			i, j = 0
+			while i < (tam - 1)
+				cadena = "#{cadena}"+"{@autores[i]} #{@apellidos[i]}, "
+				i = i+1
+				j = j+1
+			end
+			cadena = "#{cadena}"+"#{@autores[i]} #{@apellidos[i]}"
+		end
 
-	def GetAutor()
-		@autor
-	end
+		def SetTitulo(valor)
+			@titulo = valor
+		end
 
-	def SetAutor(valor)
-		@autor = valor
-	end
+		def GetTitulo()
+			@titulo
+		end
 
-	def SetTitulo(valor)
-		@titulo = valor
-	end
+		def GetEditorial()
+			"#{@num_editorial}"
+		end
 
-	def GetTitulo()
-		@titulo
-	end
+		def GetEdicion()
+			"#{@edicion}"
+		end
 
-	def SetEditorial(valor)
-		@editorial = valor
-	end
+		def GetSerie()
+			"#{@serie}"
+		end
 
-	def GetEditorial()
-		@editorial
-	end
+		def GetIsbn()
+			tam = @isbn.length	
+			a = @isbn[0].length
+			cadena = "ISBN-#{a}: "
+			if a > 10
+				cadena = "#{cadena}" + "#{@isbn[0][-a..-11]}" + " - " + "#{@isbn[0][-10..-1]}"
+			else
+				cadena = "#{cadena}"+"#{@isbn[0]}"
+			end
+			i = 1
+		end
 
-	def SetEditorial(valor)
-		@editorial = valor
-	end
+		def to_s(valor)
+			"#{@valor}"
+		end
 
-	def GetNum_edicion()
-		@num_edicion
 	end
-
-	def SetNum_edicion(valor)
-		@num_edicion = valor
-	end
-
-	def GetSerie()
-		@serie
-	end
-
-	def SetSerie(valor)
-		@serie = valor
-	end
-
-	def GetFecha_publicacion()
-		@fecha_publicacion
-	end
-
-	def SetFecha_publicacion(valor)
-		@fecha_publicacion = valor
-	end
-
-	def GetIsbn()
-		@isbn
-	end
-
-	def SetIsbn(valor)
-		@isbn = isbn
-	end
-
-	def GetIsbn13()
-		@isbn13
-	end
-
-	def SetIsbn13(valor)
-		@isbn13 = valor
-	end
-
-	def to_s(valor)
-		"(#{@valor})"
-	end
-
-	def PrintReference()
-		@salida =  GetAutor() + "\n" + GetTitulo() + "\n" + "Editorial: " + GetEditorial() + "\n" + "Fecha de publicación: " + "{@fecha_publicacion}" + "\n" + "ISBN: " + "#{@isbn}" + "\n" +"Referencia: " + "#{@isbn13}" + "\n"
-	@salida
-	end
-end
 end
