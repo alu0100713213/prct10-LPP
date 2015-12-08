@@ -33,7 +33,7 @@ Se ha seguido el directorio completo de la práctica.
 
 Para la práctica también se ha usado la herramienta Travis.
 
-[![Build Status](https://travis-ci.org/alu0100713213/prct09-LPP.svg?branch=master)](https://travis-ci.org/alu0100713213/prct09-LPP)
+[![Build Status](https://travis-ci.org/alu0100713213/prct09-LPP.svg?branch=master)](https://travis-ci.org/alu0100713213/prct10-LPP)
 
 ## Coveralls
 
