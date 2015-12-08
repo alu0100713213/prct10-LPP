@@ -2,7 +2,7 @@ module Bibliografia
 		class Bibliografia
 			include Comparable
 			attr_reader :autores, :apellidos, :titulo, :serie, :num_editorial,
-			      :edicion, :dia, :mes, :ano, :isbn
+			      :edicion, :mes, :ano, :isbn
 
 		def initialize(a, ap, t, s, n, e, d, m, an, i)
 			@autores = a
