@@ -20,10 +20,10 @@ describe Bibliografia do
 
 # Citas y ref. con el formato de la Asociación de Psicológica Americana (APA)
         @c = Bibliografia::Cita_APA.new
-	@b1 = Bibliografia::Libro.new(['Dave','Andy','Chad'], ['Thomas', 'Hunt', 'Fowler'], 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide', '2323', 'Pragmatic Bookshelf', 'edicion 2', 4, 'July 7', 2013, ['9781937785499', '1937785491'])
-	@b2 = Bibliografia::Libro.new(['Dave','Andy','Chad'], ['Thomas', 'Hunt', 'Fowler'], 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide', '2323', 'Pragmatic Bookshelf', 'edicion 2', 4, 'July 7', 2013, ['9781937785499', '1937785491'])
-	@b3 = Bibliografia::Libro.new(['Dave','Andy','Chad'], ['Thomas', 'Hunt', 'Fowler'], 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide', '2323', 'Pragmatic Bookshelf', 'edicion 2', 4, 'July 7', 2013, ['9781937785499', '1937785491'])
-	@b4 = Bibliografia::Libro.new(['Dave','Andy','Chad'], ['Thomas', 'Hunt', 'Fowler'], 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide', '2323', 'Pragmatic Bookshelf', 'edicion 2', 4, 'July 7', 2013, ['9781937785499', '1937785491'])
+	@b1 = Bibliografia::Libro.new(['Dave','Andy','Chad'], ['Thomas', 'Hunt', 'Fowler'], 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide', '2323', 'Pragmatic Bookshelf', 'edicion 2', 4, 'July', 2013, ['9781937785499', '1937785491'])
+	@b2 = Bibliografia::Libro.new(['Dave','Andy','Chad'], ['Thomas', 'Hunt', 'Fowler'], 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers Guide', '2323', 'Pragmatic Bookshelf', 'edicion 2', 4, 'July', 2015, ['9781937785499', '1937785491'])
+	@b3 = Bibliografia::Libro.new(['Dave','Andy','Chad'], ['Thomas', 'Hunt', 'Fowler'], 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide', '2323', 'Pragmatic Bookshelf', 'edicion 2', 4, 'July', 2013, ['9781937785499', '1937785491'])
+	@b4 = Bibliografia::Libro.new(['Dave','Andy','Chad'], ['Thomas', 'Hunt', 'Fowler'], 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide', '2323', 'Pragmatic Bookshelf', 'edicion 2', 4, 'July', 2013, ['9781937785499', '1937785491'])
 
 
 	# Se inicializan nodos, para las pruebas con los nodos
@@ -96,9 +96,49 @@ describe Bibliografia do
 	end
 
 	describe '# TEST - Test con las Citas de la APA' do
-		it "Probando los nombres estan invertidos (Nombre -- Apellido)" do
+		it "Los nombres estan invertidos (Nombre -- Apellido)" do
 			expect(@c.nombre(@b1)).to eq("Thomas, D., Hunt, A. & Fowler, C.")
-		end		
+		end	
+		it "El orden de entrada es correcto" do
+			@c.insert(@b1)
+			@c.insert(@b3)
+			expect(@c.nombre(@c.list2[0])).to eq("Thomas, D., Hunt, A. & Fowler, C.")
+			expect(@c.nombre(@c.list2[1])).to eq("Thomas, D., Hunt, A. & Fowler, C.")
+		end
+
+		it "Ordena por fecha de publicacion cuando el autor es el mismo" do
+			@c.insert(@b1)
+			@c.insert(@b3)
+			@c.insert(@b4)
+			expect(@c.list2[1].ano).to eq(2013)
+		end
+
+		it "Si un autor aparece solo y el primero de un grupo que ponga primero el que sale solo" do
+			@c.insert(@b1)
+			@c.insert(@b3)
+			expect(@c.nombre(@c.list2[0])).to eq("Thomas, D., Hunt, A. & Fowler, C.")
+		end
+
+		it "Si un autor aparece solo y el primero de un grupo que ponga primero el que sale solo" do
+			@c.insert(@b1)
+			@c.insert(@b3)
+			expect(@c.nombre(@c.list2[0])).to eq("Thomas, D., Hunt, A. & Fowler, C.")
+		end
+
+		it "Mismos autores y el mismo año de publicacion" do
+			@c.insert(@b1)
+			@c.insert(@b3)
+			expect(@c.list2[0].titulo).to eq("Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide")
+		end
+
+		it "Utilizar & en lugar de 'y' o de 'and'" do
+			@c.insert(@b1)
+			expect(@c.nombre(@c.list2[0])).to eq("Thomas, D., Hunt, A. & Fowler, C.")
+		end
+		it "Todas las líneas después de la primera linea tiene que tener una sangría" do
+			@c.insert(@b1)
+			expect(@c.show(@b1)).to eq("Thomas, D., Hunt, A. & Fowler, C.\n   Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide\n   (2323)\n   Pragmatic Bookshelf; edicion 2 edition (4July2013)\n   1")
+		end
 	end
 end
 

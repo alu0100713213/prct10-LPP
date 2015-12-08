@@ -21,8 +21,8 @@ module Bibliografia
 			if(@apellidos != other.apellidos)
 				@apellidos <=> other.apellidos
 			else
-				if(@anno != other.anno)
-					@anno <=> other.anno
+				if(@ano != other.ano)
+					@anno <=> other.ano
 				else
 					@titulo <=> other.titulo
 				end
@@ -44,12 +44,8 @@ module Bibliografia
 			cadena = "#{cadena}"+"#{@autores[i]} #{@apellidos[i]}"
 		end
 
-		def SetTitulo(valor)
-			@titulo = valor
-		end
-
 		def GetTitulo()
-			@titulo
+			"#{@titulo}"
 		end
 
 		def GetEditorial()
@@ -74,6 +70,10 @@ module Bibliografia
 				cadena = "#{cadena}"+"#{@isbn[0]}"
 			end
 			i = 1
+		end
+
+		def GetFecha()
+					
 		end
 
 		def to_s(valor)
