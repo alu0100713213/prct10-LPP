@@ -10,7 +10,7 @@ module Bibliografia
 			@numero_paginas = num
 			@volumen = vo
 			@lugar_publicacion = lug
-		ends
+		end
 
 	end
 end
