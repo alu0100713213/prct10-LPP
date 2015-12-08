@@ -2,7 +2,7 @@ module Bibliografia
 		class Bibliografia
 			include Comparable
 			attr_reader :autores, :apellidos, :titulo, :serie, :num_editorial,
-			      :edicion, :mes, :ano, :isbn
+			      :edicion, :dia, :mes, :ano, :isbn
 
 		def initialize(a, ap, t, s, n, e, d, m, an, i)
 			@autores = a
@@ -114,6 +114,54 @@ module Bibliografia
 		end
 	end
 
+	class Art_Revista < Bibliografia
+		def initialize(a, ap, nom, d, m , an, lug, id)
+			@autores = a
+			@apellidos = ap
+			@nom_revista = nom
+			@dia = d
+			@mes = m
+			@ano = an
+			@lugar_pub = lug
+			@idioma = id
+		end
+
+	end
+
+	class Art_Periodico < Bibliografia
+		attr_accessor :pub
+
+		def initialize(a, ap, d, m, an, t, n_p, pa)
+			@autores = a
+			@apellidos = ap		
+			@dia = d
+			@mes = m
+			@ano = an
+			@titulo = t			
+			@nom_periodico = n_p
+			@num_paginas = pa
+		end
+
+	end
+
+
+	class Doc_Digital < Bibliografia
+		def initialize(a, ap, t, e, me, d, m, an, lug, url)
+			@autores = a
+			@apellidos = ap		
+			@titulo = t
+			@edicion = e			
+			@medio = me
+			@dia = d
+			@mes = m
+			@ano = an			
+			@lugar_pub = lug
+			@url = url
+		end
+
+	end
+
 end
+
 
 
