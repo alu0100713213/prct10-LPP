@@ -21,6 +21,9 @@ describe Bibliografia do
 # Citas y ref. con el formato de la Asociación de Psicológica Americana (APA)
         @c = Bibliografia::Cita_APA.new
 	@b1 = Bibliografia::Libro.new(['Dave','Andy','Chad'], ['Thomas', 'Hunt', 'Fowler'], 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide', '2323', 'Pragmatic Bookshelf', 'edicion 2', 4, 'July 7', 2013, ['9781937785499', '1937785491'])
+	@b2 = Bibliografia::Libro.new(['Dave','Andy','Chad'], ['Thomas', 'Hunt', 'Fowler'], 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide', '2323', 'Pragmatic Bookshelf', 'edicion 2', 4, 'July 7', 2013, ['9781937785499', '1937785491'])
+	@b3 = Bibliografia::Libro.new(['Dave','Andy','Chad'], ['Thomas', 'Hunt', 'Fowler'], 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide', '2323', 'Pragmatic Bookshelf', 'edicion 2', 4, 'July 7', 2013, ['9781937785499', '1937785491'])
+	@b4 = Bibliografia::Libro.new(['Dave','Andy','Chad'], ['Thomas', 'Hunt', 'Fowler'], 'Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’ Guide', '2323', 'Pragmatic Bookshelf', 'edicion 2', 4, 'July 7', 2013, ['9781937785499', '1937785491'])
 
 
 	# Se inicializan nodos, para las pruebas con los nodos
@@ -92,8 +95,10 @@ describe Bibliografia do
 
 	end
 
-	describe '# TEST - Test con las Citas de la APA'
-	
+	describe '# TEST - Test con las Citas de la APA' do
+		it "Probando los nombres estan invertidos (Nombre -- Apellido)" do
+			expect(@c.nombre(@b1)).to eq("Thomas, D., Hunt, A. & Fowler, C.")
+		end		
 	end
 end
 
