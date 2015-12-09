@@ -7,6 +7,8 @@ module Bibliografia
 		@list2 = Lista.new
 	end
 
+	# Método que imprime los nombres y apellidos ordenados
+
 	def nombre(other)
 		i = 0
 		if(other.autores.length>1)
@@ -20,10 +22,14 @@ module Bibliografia
 		nombre = "#{nombre}"+"#{other.apellidos[i]}, "+"#{other.autores[i][0]}."
 	end
 
+	# Método que inserta en las listas
+
 	def insert(other)
 		@list1.push(other)
 		@list2 = @list1.sort
-	end    
+	end
+
+	# Método que imprime todo el articulo, libro... de forma formateada y con sangria
 
 	def show(other)
 		size = @list2.length

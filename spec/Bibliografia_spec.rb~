@@ -153,7 +153,7 @@ describe Bibliografia do
 
 #       PRÁCTICA 10           #
 
-	describe '# PRÁCTICA 10 - Test con las Citas de la APA' do
+	describe '# TEST - Test con las Citas de la APA' do
 		it "Los nombres estan invertidos (Nombre -- Apellido)" do
 			expect(@c.nombre(@b1)).to eq("Thomas, D., Hunt, A. & Fowler, C.")
 		end	
