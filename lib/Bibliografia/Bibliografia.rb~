@@ -105,7 +105,6 @@ module Bibliografia
 		def ==(other)
 			@titulo == other.titulo
 		end
-
 	end
 
 	# OBJETO ARTICULO LIBRO HEREDA DE LA CLASE Bibliografia
@@ -125,8 +124,6 @@ module Bibliografia
 			@isbn = i
 			@sinopsis = si
 		end
-
-
 	end
 
 	# OBJETO ARTICULO DE REVISTA HEREDA DE LA CLASE Bibliografia
